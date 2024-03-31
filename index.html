@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="snow"></div>
+        <div class="promise" style="text-align: justify">
+            Среди бесчисленного множества снежинок, узор одной по настоящему
+            завораживает
+        </div>
+        <button class="promise">Нажми меня</button>
+        <button class="promise">Нажми меня</button>
+        <button class="promise">Нажми меня</button>
+        <script src="snow.js"></script>
+        <script>
+            let promise = [
+                "Желаю чтобы все твои мечты и желания исполнились, чтобы ты могла и дальше заниматься своими хобби",
+                "Желаю чтобы у тебя все было хорошо, и по окончанию учебы, смогла переехать куда хочешь",
+                "Желаю, чтобы ты обязательно смогла посетить Париж, с днем рождения Снежинка",
+            ];
+            let counter = 0;
+
+            document.querySelectorAll("button").forEach((item, index) => {
+                item.addEventListener("click", (e) => {
+                    item.style.transition = "font-size 0.4s ease";
+                    item.style.fontSize = "0rem";
+                    counter += 1;
+                    setTimeout(() => {
+                        item.textContent = promise[index];
+                        item.style.fontSize = "2.5rem";
+                    }, 400);
+                    item.setAttribute("disabled", "");
+                });
+            });
+        </script>
+        <script type="module">
+            //import the Snow module
+            import * as Snow from "/snow.js";
+
+            // Snow script included on the page, already.
+            window.onload = function () {
+                var snow = new Snow.default({
+                    id: "snow",
+                });
+
+                //Can run the snowfall by calling:
+                snow.start();
+            };
+        </script>
+    </body>
+</html>
